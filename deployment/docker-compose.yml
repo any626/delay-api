@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  delay-engine:
+    build:
+      context: ../
+      dockerfile: deployment/Dockerfile
+    container_name: ${DELAY_ENGINE_CONTAINER}
+    image: ${DELAY_ENGINE_IMAGE}
+    ports:
+      - "0.0.0.0:${DELAY_ENGINE_PORT}:8080"
+    networks:
+      - delay
+networks:
+  delay:
+    driver: bridge
